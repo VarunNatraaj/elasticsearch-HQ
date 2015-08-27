@@ -85,5 +85,5 @@ function MappingsModelFactory() {
         else {
             return  new MappingsModel();
         }
-    }
-};
+    };
+}
