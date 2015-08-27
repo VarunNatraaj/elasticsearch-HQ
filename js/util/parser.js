@@ -39,7 +39,7 @@ if (!Array.indexOf) {
             }
         }
         return -1;
-    }
+    };
 }
 
 var Parser = (function (scope) {
@@ -316,6 +316,8 @@ var Parser = (function (scope) {
         },
 
         toJSFunction:function (param, variables) {
+            /* Adding below line to prevent errors */
+            /*jshint -W054 */
             var f = new Function(param, "with(Parser.values) { return " + this.simplify(variables).toString(true) + "; }");
             return f;
         }
@@ -516,8 +518,7 @@ var Parser = (function (scope) {
                     if ((expected & PRIMARY) === 0) {
                         this.error_parsing(this.pos, "unexpected number");
                     }
-                    var token = new Token(TNUMBER, 0, 0, this.tokennumber);
-                    tokenstack.push(token);
+                    tokenstack.push(new Token(TNUMBER, 0, 0, this.tokennumber));
 
                     expected = (OPERATOR | RPAREN | COMMA);
                 }
@@ -525,8 +526,7 @@ var Parser = (function (scope) {
                     if ((expected & PRIMARY) === 0) {
                         this.error_parsing(this.pos, "unexpected string");
                     }
-                    var token = new Token(TNUMBER, 0, 0, this.tokennumber);
-                    tokenstack.push(token);
+                    tokenstack.push(new Token(TNUMBER, 0, 0, this.tokennumber));
 
                     expected = (OPERATOR | RPAREN | COMMA);
                 }
@@ -546,8 +546,7 @@ var Parser = (function (scope) {
                 }
                 else if (this.isRightParenth()) {
                     if (expected & NULLARY_CALL) {
-                        var token = new Token(TNUMBER, 0, 0, []);
-                        tokenstack.push(token);
+                        tokenstack.push(new Token(TNUMBER, 0, 0, []));
                     }
                     else if ((expected & RPAREN) === 0) {
                         this.error_parsing(this.pos, "unexpected \")\"");
@@ -942,5 +941,5 @@ var Parser = (function (scope) {
     };
 
     scope.Parser = Parser;
-    return Parser
+    return Parser;
 })(typeof exports === 'undefined' ? {} : exports);

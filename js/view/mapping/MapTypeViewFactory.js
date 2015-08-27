@@ -67,5 +67,5 @@ function MapTypeViewFactory() {
         else {
             return new MapTypeView({model:model});
         }
-    }
+    };
 }

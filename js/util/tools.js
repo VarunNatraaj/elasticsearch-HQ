@@ -221,21 +221,6 @@ $.fn.serializeObject = function () {
 };
 
 /**
- * Returns value inside an object.
- * @param obj
- * @param string
- * @return {*}
- */
-function lookupValue(obj, string) {
-    var returnString = obj[string];
-    if (obj[string] === undefined) {
-        returnString = getValue(string, obj);
-        //console.log(obj);
-    }
-    return returnString;
-}
-
-/**
  * Util method that finds an object value by key. Used for deeply nested dot-notation keys.
  *
  * @param namespace
@@ -255,6 +240,21 @@ function getValue(namespace, parent) {
         }
     }
     return current;
+}
+
+/**
+ * Returns value inside an object.
+ * @param obj
+ * @param string
+ * @return {*}
+ */
+function lookupValue(obj, string) {
+    var returnString = obj[string];
+    if (obj[string] === undefined) {
+        returnString = getValue(string, obj);
+        //console.log(obj);
+    }
+    return returnString;
 }
 
 var getURLParameter = function (name) {

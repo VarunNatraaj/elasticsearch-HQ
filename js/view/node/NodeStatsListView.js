@@ -29,15 +29,16 @@ var NodeStatsListView = Backbone.View.extend(
                 var nodeList = cluster.get("nodeList");
                 var selectedNodes = this.infoModel.get('selectedNodes');
                 var allNodes = [];
-                for (var i = 0; i < nodeList.models.length; i++) {
-                    var node = new NodeSimple();
-                    node.id = nodeList.models[i].id;
-                    node.name = nodeList.models[i].get('name');
+                for (var pos = 0; pos < nodeList.models.length; pos++) {
+                    var esNode = new NodeSimple();
+                    esNode.id = nodeList.models[pos].id;
+                    esNode.name = nodeList.models[pos].get('name');
                     for (var j = 0; j < selectedNodes.length; j++) {
-                        if (node.id == selectedNodes[j])
-                            node.selected = true;
+                        if (esNode.id == selectedNodes[j]) {
+                            esNode.selected = true;
+                        }
                     }
-                    allNodes.push(node);
+                    allNodes.push(esNode);
                 }
 
                 var nodeStatModel = this.model.toJSON();
@@ -55,8 +56,8 @@ var NodeStatsListView = Backbone.View.extend(
 
                 var nodeKeys = _.keys(nodeStatModel.nodes);
                 var nodeValues = _.values(nodeStatModel.nodes);
-                for (var i = 0; i < nodeKeys.length; i++) {
-                    nodeValues[i].id = nodeKeys[i];
+                for (var nodePos = 0; nodePos < nodeKeys.length; nodePos++) {
+                    nodeValues[nodePos].id = nodeKeys[nodePos];
                 }
                 nodeValues = _.sortBy(nodeValues, function (node) {
                     return node.name;
@@ -271,7 +272,7 @@ var NodeStatsListView = Backbone.View.extend(
             },
             refreshSelectedNodes:function () {
                 var selectedNodes = $('#selectedNodes').val();
-                if (selectedNodes != undefined && selectedNodes.length != 0) {
+                if (selectedNodes !== undefined && selectedNodes.length !== 0) {
                     nodeRoute.selectedDiagnoseNodeIDs = $('#selectedNodes').val();
                 }
                 nodeRoute.diagnoseNodes();

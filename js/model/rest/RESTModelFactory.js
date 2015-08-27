@@ -78,5 +78,5 @@ function RESTModelFactory() {
         else {
             return  model;
         }
-    }
+    };
 }

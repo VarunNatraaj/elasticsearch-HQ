@@ -21,7 +21,7 @@ var nodeRoute = {};
 nodeRoute.selectedDiagnoseNodeIDs = [];
 
 nodeRoute.selectDiagnoseNodes = function (nodeList) {
-    if (nodeList != undefined && nodeList.length > 0) {
+    if (nodeList !== undefined && nodeList.length > 0) {
         // pull the first X nodes for selection
         var maxNodes = settingsModel.get('settings').nodeDiagnosticsMax;
         for (var i = 0; i < maxNodes; i++) {
@@ -36,7 +36,7 @@ nodeRoute.diagnoseNodes = function () {
 
     // only show the first X nodes. Large node lists can cause browser to stall, so we limit what we call the cluster for.
     var nodeList = cluster.get("nodeList");
-    if (nodeRoute.selectedDiagnoseNodeIDs.length == 0) {
+    if (nodeRoute.selectedDiagnoseNodeIDs.length === 0) {
         nodeRoute.selectDiagnoseNodes(nodeList);
     }
 

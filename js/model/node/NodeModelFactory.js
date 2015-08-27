@@ -33,7 +33,7 @@ function NodeInfoModelFactory() {
         else {
             return  new NodeInfoModel({nodeId:nodeId, connectionRootURL:cluster.get("connectionRootURL")});
         }
-    }
+    };
 }
 
 function NodeStatsModelFactory() {
@@ -48,7 +48,7 @@ function NodeStatsModelFactory() {
         else {
             return  new NodeStatsModel({nodeId:nodeId, connectionRootURL:cluster.get("connectionRootURL")});
         }
-    }
+    };
 }
 
 function NodeStatsListModelFactory() {
@@ -57,7 +57,7 @@ function NodeStatsListModelFactory() {
         if (versionUtil.isNewer("0.99.0", cluster.versionNumber.concat)) {
             model.url = function () {
                 var sNodes = this.get('selectedNodes');
-                if (sNodes == undefined || sNodes.length == 0) {
+                if (sNodes === undefined || sNodes.length === 0) {
                     return '/_nodes/stats?all=1';
                 }
                 else {
@@ -78,7 +78,7 @@ function NodeStatsListModelFactory() {
         else {
             return  model;
         }
-    }
+    };
 }
 
 function NodeInfoListModelFactory() {
@@ -87,7 +87,7 @@ function NodeInfoListModelFactory() {
         if (versionUtil.isNewer("0.99.0", cluster.versionNumber.concat)) {
             model.url = function () {
                 var sNodes = this.get('selectedNodes');
-                if (sNodes == undefined || sNodes.length == 0) {
+                if (sNodes === undefined || sNodes.length === 0) {
                     return '/_nodes?all=1';
                 }
                 else {
@@ -106,5 +106,5 @@ function NodeInfoListModelFactory() {
         else {
             return  model;
         }
-    }
+    };
 }

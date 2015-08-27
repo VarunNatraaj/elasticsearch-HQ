@@ -20,6 +20,35 @@
  * This class taken from https://gist.github.com/clintongormley/5394980
  */
 
+/**
+ * Formats numbers according to their rule settings
+ * @type {Object}
+ */
+var Formats = {
+    comma:function (n) {
+        n = Math.round(n) + '';
+        var re = /^([-+]?\d+)(\d{3})/;
+        while (1) {
+            var new_n = n.replace(re, '$1,$2');
+            if (new_n === n) {
+                break;
+            }
+            n = new_n;
+        }
+        return n;
+    },
+    pct:function (n) {
+        n = Math.round(n * 1000) / 10;
+        return n + '%';
+    },
+    ms:function (n) {
+        n = Math.round(n * 100) / 100;
+        return n + 'ms';
+    },
+    float:function (n) {
+        return Math.round(n * 10) / 10;
+    }
+};
 
 /**
  *
@@ -160,36 +189,6 @@ function makeDiagnosticsPopOver(node, rule) {
 
     return tpl;
 }
-
-/**
- * Formats numbers according to their rule settings
- * @type {Object}
- */
-var Formats = {
-    comma:function (n) {
-        n = Math.round(n) + '';
-        var re = /^([-+]?\d+)(\d{3})/;
-        while (1) {
-            var new_n = n.replace(re, '$1,$2');
-            if (new_n === n) {
-                break;
-            }
-            n = new_n;
-        }
-        return n;
-    },
-    pct:function (n) {
-        n = Math.round(n * 1000) / 10;
-        return n + '%';
-    },
-    ms:function (n) {
-        n = Math.round(n * 100) / 100;
-        return n + 'ms';
-    },
-    float:function (n) {
-        return Math.round(n * 10) / 10;
-    }
-};
 
 function general_rules() {
     return [

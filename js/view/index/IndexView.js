@@ -74,7 +74,7 @@ var IndexView = Backbone.View.extend(
 
             // assemble shards
             var _shards = [];
-            if (indexStatus.indices[this.model.indexId] != undefined) // happens on closed indices
+            if (indexStatus.indices[this.model.indexId] !== undefined) // happens on closed indices
             {
                 _shards = _.values(indexStatus.indices[this.model.indexId].shards);
             }
@@ -86,7 +86,7 @@ var IndexView = Backbone.View.extend(
                 var shardArr = _shards[$i];
                 for (var $j = 0; $j < shardArr.length; $j++) {
                     var nodeid = shardArr[$j].routing.node;
-                    if (nodeList.models != undefined) {
+                    if (nodeList.models !== undefined) {
                         for (var $k = 0; $k < nodeList.models.length; $k++) {
                             if (nodeid == nodeList.models[$k].id) {
                                 shardArr[$j].node = nodeList.models[$k].attributes.name;

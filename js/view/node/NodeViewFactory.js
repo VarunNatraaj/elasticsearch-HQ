@@ -48,12 +48,12 @@ function NodeStatsViewFactory() {
                 settings.http_address = nodeInfo.nodes[nodeId].http_address;
                 settings.host = nodeInfo.nodes[nodeId].host;
                 return settings;
-            }
+            };
 
             return view;
         }
         else {
             return  view;
         }
-    }
+    };
 }

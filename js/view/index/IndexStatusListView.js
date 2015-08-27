@@ -50,14 +50,14 @@ var IndexStatusListView = Backbone.View.extend(
                 var blocks = clusterState.blocks.indices;
                 var blockKeys = _.keys(blocks);
                 for (var j = 0; j < blockKeys.length; j++) {
-                    var index = {};
-                    index.cid = index.id;
-                    index.id = blockKeys[j];
-                    index.name = blockKeys[j];
-                    index.docs = {num_docs:0};
-                    index.index = {primary_size:0};
-                    index.status = 'closed';
-                    indices.push(index);
+                    var closedIndex = {};
+                    closedIndex.cid = closedIndex.id;
+                    closedIndex.id = blockKeys[j];
+                    closedIndex.name = blockKeys[j];
+                    closedIndex.docs = {num_docs:0};
+                    closedIndex.closedIndex = {primary_size:0};
+                    closedIndex.status = 'closed';
+                    indices.push(closedIndex);
                 }
             }
             catch (e) {

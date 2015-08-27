@@ -63,13 +63,13 @@ var VisualView = Backbone.View.extend(
             var nodeKeys = _.keys(_this.model.get('nodes'));
             var nodeValues = _.values(_this.model.get('nodes'));
             var nodes = [];
-            for (var i = 0; i < nodeKeys.length; i++) {
-                nodeValues[i].id = nodeKeys[i];
-                if (nodeValues[i].id == masterNode) {
-                    nodes[i] = {name:'*' + nodeValues[i].name, type:'node', id:nodeValues[i].id};
+            for (var pos = 0; pos < nodeKeys.length; pos++) {
+                nodeValues[pos].id = nodeKeys[pos];
+                if (nodeValues[pos].id == masterNode) {
+                    nodes[pos] = {name:'*' + nodeValues[pos].name, type:'node', id:nodeValues[pos].id};
                 }
                 else {
-                    nodes[i] = {name:nodeValues[i].name, type:'node', id:nodeValues[i].id};
+                    nodes[pos] = {name:nodeValues[pos].name, type:'node', id:nodeValues[pos].id};
                 }
             }
 

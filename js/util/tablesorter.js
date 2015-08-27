@@ -25,7 +25,7 @@ $.tablesorter.addParser({
         return s.match(new RegExp(/[0-9]+(\.[0-9]+)?\ (B|K|KB|G|GB|M|MB|T|TB)/i));
     },
     format:function (s) {
-        if (s != 0) {
+        if (s !== 0) {
             var suf = s.match(new RegExp(/(B|K|KB|G|GB|M|MB|T|TB)/i))[1];
             var num = parseFloat(s.match(new RegExp(/^[0-9]+(\.[0-9]+)?/))[0]);
             switch (suf.toLowerCase()) {
@@ -82,13 +82,13 @@ $.tablesorter.addWidget({
             if (cookieExists) {
 
                 // Get the cookie data
-                var data = JSON.parse($.cookie(cookieName));
+                var cookieData = JSON.parse($.cookie(cookieName));
 
                 // If it exists
-                if (typeof(data[tableId]) != "undefined" && data[tableId] != null) {
+                if (typeof(cookieData[tableId]) != "undefined" && cookieData[tableId] != null) {
 
                     // Get the list
-                    sortList = data[tableId];
+                    sortList = cookieData[tableId];
 
                     // And finally, if the list is NOT empty, trigger the sort with the new list
                     if (sortList.length > 0) {

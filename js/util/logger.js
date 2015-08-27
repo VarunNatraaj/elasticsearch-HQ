@@ -28,4 +28,4 @@ var activateLogging = function () {
     else {
         logger.disableLogger();
     }
-}
+};
