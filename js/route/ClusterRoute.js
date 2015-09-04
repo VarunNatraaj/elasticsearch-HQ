@@ -25,9 +25,6 @@ clusterRoute.cluster = function () {
     healthModel.fetch({
         success:function () {
 
-            // BEGIN: INIT: we only do these things on successful connect...
-            checkVersion();
-
 //            $("#settings").css("visibility", "visible");
 
             activateLogging();
