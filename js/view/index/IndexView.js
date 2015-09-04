@@ -127,7 +127,6 @@ var IndexView = Backbone.View.extend(
 
             // if someone confirms deletion of an index...
             $('#deleteIndexBtn').on('click', function () {
-                _this.deleteAlias();
             });
 
             $("[rel=popRight]").popover();

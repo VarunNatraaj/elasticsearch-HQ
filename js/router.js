@@ -49,8 +49,6 @@ $(document).ready(
                 "optimizeindex/:indexId":"optimizeIndex",
                 "refreshindex/:indexId":"refreshIndex",
                 "index/:indexId":"index",
-                "createalias/:indexId":"createAlias",
-                "deletealias/:indexId":"deleteAlias",
                 "refreshindexpoller/:indexId":"refreshIndexPoller",
                 "mappings/:indexId/:mapName":"mappings",
                 "deletemapping/:indexId/:mapName":"deleteMapType",
@@ -157,15 +155,6 @@ $(document).ready(
             index:function (indexId) {
                 stopAllNodePollers();
                 indexRoute.indexView(indexId);
-            },
-            createAlias:function (indexId) {
-                stopAllNodePollers();
-                var createAliasModel = new IndexAliasModel({connectionRootURL:cluster.get("connectionRootURL")});
-                if (this.createAliasView === undefined) {
-                    this.createAliasView = new CreateAliasView({model:createAliasModel});
-                }
-                this.createAliasView.indexId = indexId;
-                this.createAliasView.render();
             },
             refreshIndexPoller:function (indexId) {
                 router.navigate('index/' + indexId, true);
