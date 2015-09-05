@@ -18,33 +18,6 @@
 
 var mapRoute = {};
 
-mapRoute.createMapping = function () {
-    var createTypeModel = new MappingSimple({connectionRootURL:cluster.get("connectionRootURL")});
-    if (this.createTypeView === undefined) {
-        this.createTypeView = new CreateTypeView({model:createTypeModel});
-    }
-    this.createTypeView.render();
-};
-
-mapRoute.deleteMapType = function (indexId, mappingName) {
-    var mappingModel = new MappingSimple({connectionRootURL:cluster.get("connectionRootURL"), indexId:indexId, mappingName:mappingName});
-    mappingModel.id = indexId;
-    mappingModel.destroy({
-        success:function (model, response) {
-            $('#deletemappingmodal').modal('hide');
-            $('#deletemappingmodal').on('hidden', function () {
-                router.navigate("mappings", true);
-            });
-        },
-        error:function (model, response, options) {
-            $('#deletemappingmodal').modal('hide');
-            $('#deletemappingmodal').on('hidden', function () {
-                router.navigate("mappings", true);
-            });
-        }
-    });
-};
-
 mapRoute.viewMappings = function (indexId, mappingName) {
     var mappingModel = new MappingsModelFactory().create();
     if (indexId === undefined && mappingName === undefined) { // list all mapping types

@@ -32,14 +32,11 @@ $(document).ready(
                 "nodes/:nodeId":"nodes",
                 "nodediagnostics":"nodeDiagnostics",
                 "refreshNodeDiagnostics":"refreshNodeDiagnostics",
-                "shutdownNode/:nodeId":"killNode",
                 "showhotthreads/:nodeId":"showhotthreads",
                 "indices":"indices",
                 "index/:indexId":"index",
                 "refreshindexpoller/:indexId":"refreshIndexPoller",
                 "mappings/:indexId/:mapName":"mappings",
-                "deletemapping/:indexId/:mapName":"deleteMapType",
-                "createmapping":"createMapping",
                 "mappings":"mappings",
                 "restapi":"viewRest",
                 "restcall/:command":"callRest",
@@ -93,14 +90,6 @@ $(document).ready(
             mappings:function (indexId, mapName) {
                 stopAllNodePollers();
                 mapRoute.viewMappings(indexId, mapName);
-            },
-            deleteMapType:function (indexId, mapName) {
-                stopAllNodePollers();
-                mapRoute.deleteMapType(indexId, mapName);
-            },
-            createMapping:function () {
-                stopAllNodePollers();
-                mapRoute.createMapping();
             },
             viewRest:function () {
                 stopAllNodePollers();
