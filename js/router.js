@@ -38,13 +38,8 @@ $(document).ready(
                 "refreshindexpoller/:indexId":"refreshIndexPoller",
                 "mappings/:indexId/:mapName":"mappings",
                 "mappings":"mappings",
-                "restapi":"viewRest",
-                "restcall/:command":"callRest",
-                "jsoneditor":"jsoneditor",
                 "admin":"admin",
                 "admin/action":"admin",
-                "documents":"queryView",
-                "snapshots":"snapshots",
                 "viewsettings":"viewSettings",
                 "visualize":"visualize",
                 "*actions":"defaultRoute"
@@ -90,26 +85,6 @@ $(document).ready(
             mappings:function (indexId, mapName) {
                 stopAllNodePollers();
                 mapRoute.viewMappings(indexId, mapName);
-            },
-            viewRest:function () {
-                stopAllNodePollers();
-                restRoute.view();
-            },
-            queryView:function () {
-                stopAllNodePollers();
-                queryRoute.init();
-            },
-            callRest:function (command) {
-                stopAllNodePollers();
-                restRoute.json(command);
-            },
-            jsoneditor:function (command) {
-                stopAllNodePollers();
-                restRoute.editorView();
-            },
-            snapshots:function () {
-                stopAllNodePollers();
-                snapShotRoute.init();
             },
             viewSettings:function () {
                 stopAllNodePollers();
