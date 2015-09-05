@@ -35,19 +35,6 @@ $(document).ready(
                 "shutdownNode/:nodeId":"killNode",
                 "showhotthreads/:nodeId":"showhotthreads",
                 "indices":"indices",
-                "refreshindices":"refreshIndices",
-                "optimizeall":"optimizeall",
-                "flushall":"flushall",
-                "clearcacheall":"clearcacheall",
-                "refreshall":"refreshAll",
-                "createindex":"createIndex",
-                "deleteindex/:indexId":"deleteIndex",
-                "flushindex/:indexId":"flushIndex",
-                "openindex/:indexId":"openIndex",
-                "closeindex/:indexId":"closeIndex",
-                "clearcacheindex/:indexId":"clearCacheIndex",
-                "optimizeindex/:indexId":"optimizeIndex",
-                "refreshindex/:indexId":"refreshIndex",
                 "index/:indexId":"index",
                 "refreshindexpoller/:indexId":"refreshIndexPoller",
                 "mappings/:indexId/:mapName":"mappings",
@@ -107,50 +94,6 @@ $(document).ready(
             indices:function () {
                 stopAllNodePollers();
                 indicesRoute.viewIndices();
-            },
-            refreshIndices:function () {
-                router.navigate('indices', true);
-            },
-            optimizeall:function () {
-                indicesRoute.optimizeAll();
-            },
-            flushall:function () {
-                indicesRoute.flushAll();
-            },
-            clearcacheall:function () {
-                indicesRoute.clearCacheAll();
-            },
-            refreshAll:function () {
-                indicesRoute.refreshAll();
-            },
-            createIndex:function () {
-                stopAllNodePollers();
-                var createIndexModel = new IndexModel({connectionRootURL:cluster.get("connectionRootURL")});
-                if (this.createIndexView === undefined) {
-                    this.createIndexView = new CreateIndexView({model:createIndexModel});
-                }
-                this.createIndexView.render();
-            },
-            deleteIndex:function (indexId) {
-                indexRoute.deleteIndex(indexId);
-            },
-            clearCacheIndex:function (indexId) {
-                indexRoute.clearCacheIndex(indexId);
-            },
-            flushIndex:function (indexId) {
-                indexRoute.flushIndex(indexId);
-            },
-            refreshIndex:function (indexId) {
-                indexRoute.refreshIndex(indexId);
-            },
-            optimizeIndex:function (indexId) {
-                indexRoute.optimizeIndex(indexId);
-            },
-            openIndex:function (indexId) {
-                indexRoute.openIndex(indexId);
-            },
-            closeIndex:function (indexId) {
-                indexRoute.closeIndex(indexId);
             },
             index:function (indexId) {
                 stopAllNodePollers();
