@@ -40,12 +40,6 @@ nodeTemplate.nodeList = [
 
 ].join("\n");
 
-nodeTemplate.nodeShutdown = [
-    '<div class="lead text-center" style="padding-top: 20px;">Shutdown Command has been sent to Node.<br/>Click button below to refresh node list.<br/>',
-    '<br/><br/><a href="#cluster" class="btn btn-large btn-primary">Click to Continue <i class="icon-chevron-right"></i></a>',
-    '</div>'
-].join("\n");
-
 nodeTemplate.nodeHotThreads = [
     '<div class="modal hide fade" id="threadModal">',
     '<div class="modal-header">',
@@ -292,20 +286,6 @@ nodeTemplate.jvminfotable = [
 
 nodeTemplate.nodeInfo = [
 
-    '<div class="modal hide fade" id="killnodemodal">',
-    '<div class="modal-header">',
-    '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>',
-    '<h3>WARNING!</h3>',
-    '</div>',
-    '<div class="modal-body">',
-    '<p>Are you sure you want to Shutdown this Node?<br/><br/>You will have to re-start the node manually after this action!</p>',
-    '</div>',
-    '<div class="modal-footer">',
-    '<a href="#" class="btn" data-dismiss="modal">Close</a>',
-    '<a href="#shutdownNode/<%- nodeId %>" class="btn btn-danger">Shutdown!</a>',
-    '</div>',
-    '</div>',
-
     '<div class="row-fluid"">',
 
 
@@ -317,9 +297,6 @@ nodeTemplate.nodeInfo = [
     '<div class="btn-group">',
     '<a href="#nodeInfoModal" role="button" data-toggle="modal" class="btn btn-info" rel="tipRight" data-placement="bottom" data-title="Just the Facts, Ma\'am"',
     '><i class="icon-info-sign"></i></a>',
-    '<a href="#killnodemodal" data-toggle="modal" role="button" class="btn btn-info" rel="tipRight" data-placement="bottom" data-title="Shutdown Node"><i',
-    ' class="icon-off"></i>',
-    '</a>',
     '</div> <!-- btn group -->',
     '</div> <!-- toolbar --> ',
 
